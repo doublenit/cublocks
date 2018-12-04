@@ -1,0 +1,29 @@
+$orange: rgba(246, 103, 51, 1);
+$purple: rgba(82, 45, 128, 1);
+$innovation: rgba(134, 137, 140, 1);
+$blueridge: rgba(58, 73, 88, 1);
+$white: rgba(255, 255, 255, 0.95);
+$black: rgba(0, 0, 0, 1);
+
+.entry-content .wp-block-clemson-socials,
+.wp-block-clemson-socials {
+
+    background: $white;
+    border: 1px $orange solid;
+    padding: 1rem;
+
+    h4 {
+        color: $black;
+        font-size: 1.2rem;
+        position:relative;
+        top:-1.75rem;
+        background-color:$white;
+        display:inline-block;
+        padding:0 10px;
+    }
+
+    p {
+        font-size: 1.4rem;
+    }
+
+}
