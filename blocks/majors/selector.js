@@ -7,7 +7,8 @@ const {
     InspectorControls,
 } = wp.editor;
 const {
-    SelectControl
+    SelectControl,
+    Disabled
 } = wp.components;
 
 /**
@@ -18,8 +19,11 @@ export default class Selector extends Component {
     constructor() {
         super( ...arguments );
         this.grabMajors = this.grabMajors.bind(this);
+        this.majorInfo = this.majorInfo.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.state = {
-        	all:null
+        	all:[{label: 'Loading', value: null }],
+        	isLoaded:false
         }
     }
 
@@ -27,35 +31,56 @@ export default class Selector extends Component {
     	const url = 'http://ows.sites.clemson.edu/apis/degrees/degrees.txt',
     	allMajors = fetch( url ), 
     	ug = {},
-    	all = [];
+    	all = [ { label:'Select a major', value:null } ];
 
     	allMajors.then( response => response.json() )
-    	.then( function( data ) {
-    		let majors = data, allOfEm = Object.keys(majors);
+    	.then( ( data ) => {
+    		let majors = data, 
+    			allOfEm = Object.keys(majors),
+    			allMajors = Object.keys(majors).map( (key) => majors[key] ),
+    			allUgMajors = allMajors.filter( major => major.degree_id < 999 );
     		allOfEm.map(function(item, key) {
     			if( majors[item].degree_id < 999 ) {
     				all.push({label: majors[item].degreeInfo.name, value: majors[item].degreeInfo.slug, link: majors[item].degreeInfo.website});
     			}
     		});
+    		this.setState({ all, isLoaded:true });
     	})
     	.catch( error => console.log( error ) );
-    	this.setState({ all });
     }
 
     componentDidMount() {
     	this.grabMajors();
     }
 
+    majorInfo( slug ) {
+    	const majors = this.state.all;
+    	const majorObj = majors.find( major => major.value === slug );
+    	return majorObj;
+    }
+
+    handleChange( slug ) {
+    	const major = this.majorInfo( slug.major );
+    	this.props.onChangeMajor( major.value, major.label );
+    }
+
     render() {
-    	const { attributes: { major }, onChangeMajor  } = this.props;
-    	
-        return (
-            <SelectControl
+    	const { onChangeMajor  } = this.props;
+    	const Select = () => <SelectControl
             	label={ __( 'Select a major:' ) }
             	value={ this.props.value } 
-            	onChange={ major => onChangeMajor( { major } ) }
+            	onChange={ major => { this.handleChange( { major } ) } }
             	options={ this.state.all }
-            />
+            />;
+        return (
+        	this.state.isLoaded ? (
+        		<Select />
+        		) : (
+        			<Disabled>
+        				<Select />
+        			</Disabled>
+        		)
+            
         );
     }
 }

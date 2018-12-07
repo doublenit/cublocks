@@ -1,7 +1,18 @@
-.entry-content .wp-block-clemson-majors,
 .wp-block-clemson-majors {
-
 	border:1px solid #f66733;
 	padding:20px;
+}
+
+.entry-content .wp-block-clemson-majors {
+	padding:20px;
+	// border
+	border:none;
+	border-left:10px solid #f66733;
+	-moz-border-image: -moz-linear-gradient(top, rgba(246,103,51,1) 0%, rgba(245,84,52,1) 100%);
+	-webkit-border-image: -webkit-linear-gradient(top, rgba(246,103,51,1) 0%, rgba(245,84,52,1) 100%);
+	border-image: linear-gradient(to bottom, rgba(246,103,51,1) 0%, rgba(245,84,52,1) 100%);
+	border-image-slice: 1;
+
+	margin-top:2rem;
 
 }

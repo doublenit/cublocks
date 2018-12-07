@@ -10,6 +10,7 @@
       justify-content: center; }
   .entry-content .wp-block-clemson-apply a.applyBtn,
   .wp-block-clemson-apply a.applyBtn {
+    border-radius: 4px;
     background: #f66733;
     background: -webkit-gradient(left top, left bottom, color-stop(0%, #f66733), color-stop(50%, #f66733), color-stop(100%, #f55434));
     background: linear-gradient(to bottom, #f66733 0%, #f55434 100%);
@@ -28,7 +29,7 @@
     letter-spacing: 1.4px;
     font-family: arial, helvetica, 'sans-serif';
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25), 0 2px 8px 0 rgba(0, 0, 0, 0.15);
-    border-radius: 4px; }
+    transition: box-shadow .125s ease-in-out; }
   .entry-content .wp-block-clemson-apply a.applyBtn:hover,
   .wp-block-clemson-apply a.applyBtn:hover {
     background: #f66733;
@@ -47,24 +48,15 @@
   .entry-content .wp-block-clemson-apply svg .pawSVG,
   .wp-block-clemson-apply svg .pawSVG {
     fill: rgba(255, 255, 255, 0.95); }
-.entry-content .wp-block-clemson-socials,
-.wp-block-clemson-socials {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px #f66733 solid;
-  padding: 1rem; }
-  .entry-content .wp-block-clemson-socials h4,
-  .wp-block-clemson-socials h4 {
-    color: black;
-    font-size: 1.2rem;
-    position: relative;
-    top: -1.75rem;
-    background-color: rgba(255, 255, 255, 0.95);
-    display: inline-block;
-    padding: 0 10px; }
-  .entry-content .wp-block-clemson-socials p,
-  .wp-block-clemson-socials p {
-    font-size: 1.4rem; }
-.entry-content .wp-block-clemson-majors,
 .wp-block-clemson-majors {
   border: 1px solid #f66733;
   padding: 20px; }
+
+.entry-content .wp-block-clemson-majors {
+  padding: 20px;
+  border: none;
+  border-left: 10px solid #f66733;
+  -o-border-image: linear-gradient(to bottom, #f66733 0%, #f55434 100%);
+     border-image: linear-gradient(to bottom, #f66733 0%, #f55434 100%);
+  border-image-slice: 1;
+  margin-top: 2rem; }

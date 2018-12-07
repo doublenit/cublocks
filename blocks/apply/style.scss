@@ -7,6 +7,8 @@
 	justify-content: center;
 
 	a.applyBtn {
+
+		border-radius:4px;
 		
 		// color
 		background: rgba(246,103,51,1);
@@ -30,7 +32,7 @@
 		font-family:arial, helvetica, 'sans-serif';
 
 		box-shadow: 0 1px 2px 0 rgba(0,0,0,.25), 0 2px 8px 0 rgba(0,0,0,.15);
-		border-radius:4px;
+		transition: box-shadow .125s ease-in-out;
 	}
 	a.applyBtn:hover {
 		background: rgba(246,103,51,1);
