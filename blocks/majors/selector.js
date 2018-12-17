@@ -28,25 +28,25 @@ export default class Selector extends Component {
     }
 
     grabMajors() {
-    	const url = 'http://ows.sites.clemson.edu/apis/degrees/degrees.txt',
-    	allMajors = fetch( url ), 
-    	ug = {},
-    	all = [ { label:'Select a major', value:null } ];
+		const url = 'http://ows.sites.clemson.edu/apis/degrees/degrees.txt',
+		allMajors = fetch( url ), 
+		ug = {},
+		all = [ { label:'Select a major', value:null } ];
 
-    	allMajors.then( response => response.json() )
-    	.then( ( data ) => {
-    		let majors = data, 
-    			allOfEm = Object.keys(majors),
-    			allMajors = Object.keys(majors).map( (key) => majors[key] ),
-    			allUgMajors = allMajors.filter( major => major.degree_id < 999 );
-    		allOfEm.map(function(item, key) {
-    			if( majors[item].degree_id < 999 ) {
-    				all.push({label: majors[item].degreeInfo.name, value: majors[item].degreeInfo.slug, link: majors[item].degreeInfo.website});
-    			}
-    		});
-    		this.setState({ all, isLoaded:true });
-    	})
-    	.catch( error => console.log( error ) );
+		allMajors.then( response => response.json() )
+		.then( ( data ) => {
+			let majors = data, 
+				allOfEm = Object.keys(majors),
+				allMajors = Object.keys(majors).map( (key) => majors[key] ),
+				allUgMajors = allMajors.filter( major => major.degree_id < 999 );
+			allOfEm.map(function(item, key) {
+				if( majors[item].degree_id < 999 ) {
+					all.push({label: majors[item].degreeInfo.name, value: majors[item].degreeInfo.slug, link: majors[item].degreeInfo.website});
+				}
+			});
+			this.setState({ all, isLoaded:true });
+		})
+		.catch( error => console.log( error ) );
     }
 
     componentDidMount() {

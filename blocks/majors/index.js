@@ -54,7 +54,7 @@ export default registerBlockType(
 			    className, setAttributes, isSelected } = props;
 
 			const onChangeMajor = (major_slug, major_name) => { setAttributes( { major_slug, major_name } ) };
-console.log({major_slug});
+
 			return (
 				<Fragment>
 				{ !isSelected ? (

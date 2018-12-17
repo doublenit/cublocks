@@ -6,3 +6,4 @@ import './i18n.js';
 import './apply';
 // import './socials';
 import './majors';
+import './experts';

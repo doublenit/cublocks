@@ -68,5 +68,5 @@ include __DIR__ . '/lib/block-templates.php';
 // Settings Page
 include __DIR__ . '/lib/settings-page.php';
 
-// // Dynamic Blocks
-// include __DIR__ . '/blocks/12-dynamic/index.php';
+// Dynamic Blocks
+// include __DIR__ . '/blocks/experts/index.php';
